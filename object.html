@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+        <style>
+            .calculator{
+                width:max-content;
+                height:max-content;
+               box-shadow:1px 1px 6px 1px #888888;
+                position:absolute;
+                left:35%;
+                background-color:rgb(218, 200, 220);
+                display:flex;
+                flex-direction: column;
+                margin:10px;
+            }
+            .display{
+                width:100%;
+                height:150px;
+               
+                background-color:rgb(218, 200, 220);
+                margin-bottom:1px;
+            }
+            #button1{
+                width:132px;
+            }
+            
+            div .button{
+             
+                margin-left:2px;
+               text-align:center;
+               justify-content: center;
+               padding:35px;
+               
+            border:none;
+            cursor:pointer;
+            background-color: white;
+            font-size:20px;
+            font-weight:bolder;
+            width:30px;
+            /* margin-top:40px; */
+            }
+           
+            .operator{
+                box-shadow:1px 1px 2px 2px rgb(216, 191, 191);
+                width:30px;
+            text-align:center;
+            justify-content: center;
+            /* margin:2px; */
+            margin-right:1px;
+            padding:35px;
+            /* padding-left:39px !important;
+            padding-right:39px !important; */
+            border:none;
+            cursor:pointer;
+            background-color: rgb(171, 46, 46) !important;
+            color:white;
+            font-size:20px;
+            font-weight:bolder;
+            margin:0px 2px
+            }
+            .rows{
+                margin-top:1px;
+                margin-bottom:1px;
+                display: flex;
+                flex-direction: rows;
+            }
+            .button:hover{
+                background-color:rgb(216, 191, 191);
+            }
+           
+            .button span{
+                margin-bottom:10px;
+                font-size:30px;
+                font-weight:600;
+                color:black;
+            }
+            .operator span{
+                color:white;
+                font-size:30px;
+                font-weight:600;
+            }
+            #result{
+                position:absolute;
+                bottom:0;
+                right:0;
+                font-size:40px;
+                font-weight:bolder;
+                font-style: normal;
+                font-family: sans-serif;
+            }
+        </style>
+        
+</head>
+<body>
+
+    <div class="calculator" >
+        <h2 style="text-align:center;color:rgb(189, 51, 51);font-weight:600;font-style:normal;font-family:sans-serif;font-size:30px;">Calculator Project</h2>
+        <div class="display" id="display" style="position:relative;">
+            <p id="result"></p>
+        </div>
+        <div class="rows" style="flex-wrap:no-wrap;">
+            <div class="button" data-value="AC"><span >AC</span></div>
+            <div class="button" data-value="+/-" ><span>+/-</span></div>
+            <div class="button" data-value="%"><span>%</span></div>
+            <div class="button operator" data-value="/"><span>/</span></div>
+        </div>
+        <div class="rows" style="flex-wrap:no-wrap;">
+            <div class="button" data-value="7"><span>7</span></div>
+            <div class="button" data-value="8"><span>8</span></div>
+            <div class="button" data-value="9" ><span>9</span></div>
+            <div class="button operator" data-value="*"><span>*</span></div>
+        </div>
+        <div class="rows" style="flex-wrap:no-wrap;">
+            <div class="button"  data-value="4"><span>4</span></div>
+            <div class="button"data-value="5"><span>5</span></div>
+            <div class="button"  data-value="6"><span>6</span></div>
+            <div class="button operator" data-value="-"><span>-</span></div>
+        </div>
+        
+        
+        <div class="rows" style="flex-wrap:no-wrap;">
+            <div class="button"data-value="1"><span>1</span></div>
+            <div class="button"data-value="2"><span>2</span></div>
+            <div class="button"data-value="3"><span>3</span></div>
+            <div class=" button operator"  id="button"data-value="+"><span>+</span></div>
+        </div>
+       
+        <div class="rows" style="flex-wrap:no-wrap;">
+            
+            <div class="button"  id="button1"data-value="0"><span>0</span></div>
+            <div class="button" data-value="." ><span>.</span></div>
+            <div class="button operator" data-value="="><span>=</span></div>
+        </div>
+        
+    </div>
+    
+    <script type="text/javascript">
+        var operator=null;
+        var operand1= null;
+        var operand2= null;
+        let string="";
+       var buttons= document.getElementsByClassName("button");
+        var results= document.getElementById("result");
+        for(var i=0;i<buttons.length;i++){
+
+        
+       buttons[i].addEventListener('click',function(){
+        var value= this.getAttribute('data-value');
+        if(value=='='){
+            
+            operand2=parseFloat(result.textContent);
+            var output= eval(operand1 +" "+operator+" "+operand2);
+            console.log(operand1);
+            console.log(operand2);
+            console.log(operator);
+            console.log(output);
+            results.innerText=output;
+
+        }else if(value=='+'){
+            
+            operator='+';
+            operand1=parseFloat(result.textContent);
+            results.innerText =string;
+        }else if(value=='AC'){
+            results.innerText=string;
+        }
+        else if(value=='*'){
+            
+            operator='*';
+            operand1=parseFloat(result.textContent);
+            results.innerText =string;
+        }else if(value=='-'){
+           
+            operator='-';
+            operand1=parseFloat(result.textContent);
+            results.innerText =string;
+        }else if(value=='/'){
+            
+            operator='/';
+            operand1=parseFloat(result.textContent);
+            results.innerText =string;
+        }
+        else if(value=='%'){
+            
+            
+            operand1=parseFloat(result.textContent);
+            var res=eval(operand1+" "+"/"+" "+100);
+            results.innerText =res;
+        }
+        else{
+            results.innerText +=value;
+        }
+       
+
+       });
+    }
+    </script>
+</body>
+</html>
+
